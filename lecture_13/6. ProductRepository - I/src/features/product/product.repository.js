@@ -29,10 +29,22 @@ class ProductRepository{
             return newProduct;
         }catch(err){
             console.log(err);
-            throw new ApplicationError("Something went wrong with th e")
+            throw new ApplicationError("Something went wrong with the database", 500);
         }
-
     }
+
+    // async getAll(){
+    //     try{
+    //         const db = getDB();
+    //         const collection = db.collection(this.collection);
+    //         const products = await collection.find().toArray();
+    //         console.log(products);
+    //         return products;
+    //     } catch(err){
+    //         console.log(err);
+    //         throw new ApplicationError("Something went wrong with database", 500);
+    //     }
+    // }
 
     async getAll(){
         try{
@@ -41,11 +53,22 @@ class ProductRepository{
             const products = await collection.find().toArray();
             console.log(products);
             return products;
-        } catch(err){
+        }catch(err){
             console.log(err);
-            throw new ApplicationError("Something went wrong with database", 500);
+            throw new ApplicationError("Something went wrong with the database", 500);
         }
     }
+
+    // async get(id){
+    //     try{
+    //         const db = getDB();
+    //         const collection = db.collection(this.collection);
+    //         return await collection.findOne({_id: new ObjectId(id)});
+    //     }catch(err){
+    //         console.log(err);
+    //         throw new ApplicationError("Something went wrong with database", 500);
+    //     }
+    // }
 
     async get(id){
         try{
@@ -57,6 +80,7 @@ class ProductRepository{
             throw new ApplicationError("Something went wrong with database", 500);
         }
     }
+
 }
 
 export default ProductRepository;
